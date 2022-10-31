@@ -12,9 +12,24 @@
 
   <body>
     <heder>
-      <nev class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-      </nev>
+      <% if admin_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, metod::delete %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to "About" %>
+      </li>
+      <li>
+        <%= link_to "商品一覧" %>
+      </li>
+      <li>
+        <%= link_to "新規登録", new_admin_session_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_admin_session_path  %>
+      </li>
+      <% end %>
     </heder>
     <%= yield %>
   </body>
