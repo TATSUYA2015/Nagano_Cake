@@ -19,19 +19,19 @@
                 <p class="text-center">商品名</p>
               </div>
               <div class="col-md-7">
-                <%= f.text_field :text %>
+                <%= f.text_field :text, size:"40" %>
               </div>
               <div class="col-md-5">
                 <p class="text-center">商品説明</p>
               </div>
               <div class="col-md-7">
-                <%= f.text_area :body %>
+                <%= f.text_area :body, size: "40x5" %>
               </div>
               <div class="col-md-5">
                 <p class="text-center">税抜価格</p>
               </div>
               <div class="col-md-7">
-                <%= f.text_field :price %>
+                <%= f.text_field :price, size: "40" %>
               </div>
               <div class="btn-wrapper mx-auto">
                 <%= f.submit '新規登録',class: "btn btn-success" %>
