@@ -2,11 +2,8 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
 
-        <%= form_with model: @item, url:'/items' do |f| %>
+        <%= form_with model: @item, url:admin_items_path, method: :post do |f| %>
         <h1>商品新規登録</h1>
-
-
-
         <div class="container">
           <div class="row">
               <div class="col-md-5">
@@ -19,13 +16,13 @@
                 <p class="text-center">商品名</p>
               </div>
               <div class="col-md-7">
-                <%= f.text_field :text, size:"40" %>
+                <%= f.text_field :name, size:"40" %>
               </div>
               <div class="col-md-5">
                 <p class="text-center">商品説明</p>
               </div>
               <div class="col-md-7">
-                <%= f.text_area :body, size: "40x5" %>
+                <%= f.text_area :introduction, size: "40x5" %>
               </div>
               <div class="col-md-5">
                 <p class="text-center">税抜価格</p>
