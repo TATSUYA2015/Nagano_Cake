@@ -1,4 +1,25 @@
 <div class="container">
     <h1>商品編集</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-4">
+                <p class="text-right">商品画像</p>
+                <p class="text-right">商品名</p>
+                <p class="text-right">商品説明</p>
+                <p class="text-right">ジャンル</p>
+                <p class="text-right">税抜価格</p>
+                <p class="text-right">販売ステータス</p>
+            </div>
+            <div class="col-md-2"></div>
+            <%= form_with model: @item,url:admin_item_path, method: :patch do |f| %>
+            <div class="col-md-6">
+                <p class="text-left"><%= f.file_field :image, accept:"image/*" %></p>
+                <p class="text-left"><%= f.text_field :name, size:"40" %></p>
+                <p class="text-left"><%= f.text_area :introduction, size:"40x5" %></p>
+
+            </div>
+            <% end %>
+        </div>
+    </div>
 </div>
 
