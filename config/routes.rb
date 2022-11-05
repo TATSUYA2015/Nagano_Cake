@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+  namespace :public do
+    get 'home/about' => 'homes#about', as: 'about'
+  end
+
+
   namespace :admin do
     resources :items, only:[:new, :index, :show, :edit, :create, :update]
     resources :customers, only:[:index, :show, :edit, :update]
