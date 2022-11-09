@@ -1,2 +1,36 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>会員情報編集</h3>
+      <%= form_with model: @customer, url: public_customer_path, method: :patch do |f|%>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :"氏名", class: "col-md-3 control-label", style:"margin: 10px;"  %>
+      <%= f.text_area :last_name,class: "last_name col-md-3 form-control-static",size:"20x1" %>
+      <%= f.text_area :first_name,class: "last_name col-md-3 form-control-static",size:"20x1" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :"カタカナ", class: "col-md-3 control-label", style:"margin: 10px;" %>
+      <%= f.text_area :last_name_kana, class: "last_name_kana col-md-3 form-control-static",size:"20x1"  %>
+      <%= f.text_area :first_name_kana, class: "first_name_kana col-md-3 form-control-static",size:"20x1" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :"郵便番号", class: "col-md-3 control-label", style:"margin: 10px;" %>
+      <%= f.text_area :postal_code, class: "col-md-3 form-control-static",size:"20x1" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :"住所", class: "col-md-3 control-label", style:"margin: 10px;" %>
+      <%= f.text_area :address, class: "col-md-8 form-control-static",size:"30x1" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :"電話番号",class: "col-md-3 control-label", style:"margin: 10px;" %>
+      <%= f.text_area :telephone_number, class: "col-md-3 form-control-static",size:"20x1" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :"メールアドレス",class: "col-md-3 control-label", style:"margin: 10px;" %>
+      <%= f.text_area :email, class: "col-md-3 form-control-static",size:"20x1" %>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>
