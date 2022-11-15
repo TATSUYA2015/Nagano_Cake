@@ -17,9 +17,9 @@ class Public::CustomersController < ApplicationController
 
   end
 
-  def withdraw
-    @customer=customer.find(params[:id])
-    @customer.uodate(is_deleted: true)
+  def withdrawal
+    @customer=Customer.find(params[:id])
+    @customer.update(is_deleted: true)
     reset_session
     redirect_to public_root_path
   end

@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   namespace :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about', as: 'about'
-    resources :customers, only:[:show, :edit, :unsubscribe, :update, :withdraw]
-    get 'unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
+    resources :customers, only:[:show, :edit, :update]
+    #退会画面
+    get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    #論理削除用のルーティング
+    patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
   end
 
