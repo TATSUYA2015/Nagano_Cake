@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'home/about' => 'homes#about', as: 'about'
     resources :customers, only:[:show, :edit, :unsubscribe, :update, :withdraw]
+    get 'unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
+    resources :addresses, only:[:index, :create, :edit, :update, :destroy]
   end
 
 
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
     resources :items, only:[:new, :index, :show, :edit, :create, :update]
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

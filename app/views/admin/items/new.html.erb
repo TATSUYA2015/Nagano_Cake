@@ -25,6 +25,12 @@
                 <%= f.text_area :introduction, size: "40x5" %>
               </div>
               <div class="col-md-5">
+                <p class="text-center">ジャンル</p>
+              </div>
+              <div class="col-md-7">
+                <%= f.collection_select :genre, Genre.all ,:id, :name, include_blank: "--選択してください--" %>
+              </div>
+              <div class="col-md-5">
                 <p class="text-center">税抜価格</p>
               </div>
               <div class="col-md-7">

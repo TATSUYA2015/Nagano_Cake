@@ -8,12 +8,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    customer=Customer.find(params[:id])
+    customer.update(customer_params)
+    redirect_to public_customer_path
   end
 
   def unsubscribe
+
   end
 
   def withdraw
+    @customer=customer.find(params[:id])
+    @customer.uodate(is_deleted: true)
+    reset_session
+    redirect_to public_root_path
   end
 
   private

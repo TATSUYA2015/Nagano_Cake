@@ -30,6 +30,9 @@
       <%= f.label :"メールアドレス",class: "col-md-3 control-label", style:"margin: 10px;" %>
       <%= f.text_area :email, class: "col-md-3 form-control-static",size:"20x1" %>
     </div>
+    <div class="col-md-12">
+      <%= f.submit :"編集内容を保存", class: "btn btn-success" %>
+      <%= link_to "退会する",public_unsubscribe_path , class: "btn btn-danger" %>
     </div>
     <% end %>
   </div>
