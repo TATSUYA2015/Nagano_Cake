@@ -1,2 +1,67 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3><%= @customer.last_name+@customer.first_name %>さんの会員情報編集</h3>
+    </div>
+    <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+    <div class="row justify-content-around">
+      <table>
+        <tbody>
+          <tr>
+            <td><%= f.label :"会員ID" %></td>
+            <td></td>
+            <td><%= f.label :"#{@customer.id}" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"氏名" %></td>
+            <td></td>
+            <td><%= f.text_area :last_name, size:"20x1" %></td>
+            <td><%= f.text_area :first_name, size:"20x1" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"フリガナ" %></td>
+            <td></td>
+            <td><%=f.text_area :last_name_kana, size:"20x1" %></td>
+            <td><%=f.text_area :first_name_kana, size:"20x1" %></td>
+          </tr>
+          <tr>
+            <td><%=f.label :"郵便番号" %></td>
+            <td></td>
+            <td><%= f.text_area :postal_code, size:"20x1" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"住所" %></td>
+            <td></td>
+            <td><%= f.text_area :address, size:"20x1" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"電話番号" %></td>
+            <td></td>
+            <td><%= f.text_area :telephone_number, size:"20x1" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"メールアドレス" %></td>
+            <td></td>
+            <td><%= f.text_area :email, size:"20x1" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"会員ステータス" %></td>
+            <td></td>
+            <td>
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, "有効" %>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, "退会" %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= f.submit "変更を保存する", class:"btn btn-success" %> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+  </div>
+</div>

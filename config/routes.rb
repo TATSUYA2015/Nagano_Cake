@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    resources :orders, only:[:index, :show, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

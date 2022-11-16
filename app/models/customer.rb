@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   def activ_for_authentication?
-    super && (self.is_deleted == true)
+    super && (self.is_deleted == false)
   end
 
   devise :database_authenticatable, :registerable,
