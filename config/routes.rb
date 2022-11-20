@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'public/homes#top'
+
   namespace :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about', as: 'about'
+    resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update]
     #退会画面
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
