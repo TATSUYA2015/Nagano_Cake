@@ -1,5 +1,7 @@
 class CartItem < ApplicationRecord
 
-  validates :amount,   presence :true
+  has_many :items
+
+  validates :amount,   presence: true
 
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'home/about' => 'homes#about', as: 'about'
     resources :items, only:[:index, :show]
+    resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
     resources :customers, only:[:show, :edit, :update]
     #退会画面
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'

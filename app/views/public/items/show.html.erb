@@ -1,2 +1,33 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "item", item: @item %>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4">
+          <% if @item.image.attached? %>
+            <%= image_tag @item.image, size:"350x300" %>
+          <% else %>
+            <%= image_tag 'no_image', size:"350x300" %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <h3 class="text-center"><%= @item.name %></h3>
+          <p class="text-center"><%= @item.introduction %></p>
+          <h3 class="text-center">¥<%= @item.price %></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <%= form_with model: @cart_item ,url:public_cart_items_path, method: :post do |f| %>
+        <div class="col-md-4">
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, {'1個':1,'2個':2,'3個':3,'4個':4,'5個':5,'6個':6,'7個':7,'8個':8}, include_blank: "個数選択" %>
+        </div>
+        <div class="col-md-4"><%= f.submit "カートに入れる",class: "btn btn-success" %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,14 +4,22 @@
         <%= render'item', item: @item %>
         </div>
         <div class="col-md-9">
-            <h3>商品一覧(全　件)</h3>
-            <% @items.each do |item| %>
-            <%= link_to public_item_path(item.id) do %>
-                <%= image_tag item.image, size:"150x150" %>
-            <% end %>
-            <%= link_to item.name, public_item_path(item.id) %>
-            ¥<%= item.price %>
-            <% end %>
+            <h3>商品一覧(全<%= @items_all.count %>件)</h3>
+            <div class="row">
+                <% @items.each do |item| %>
+                <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px; margin: 10px 0;">
+                    <%= link_to public_item_path(item.id) do %>
+                        <% if item.image.attached? %>
+                            <%= image_tag item.image, size:"150x150" %>
+                        <% else %>
+                            <%= image_tag 'no_image',size:"150x150" %>
+                        <% end %>
+                    <% end %>
+                    <%= link_to item.name, public_item_path(item.id) %>
+                ¥<%= item.price %>
+                </div>
+                <% end %>
+            </div>
             <p class="text-center"><%= paginate @items %></p>
         </div>
     </div>
