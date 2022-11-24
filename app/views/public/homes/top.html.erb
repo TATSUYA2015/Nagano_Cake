@@ -3,7 +3,33 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-10">
-            <h1>商品一覧</h1>
+            <div class="row">
+                <div class="top-image pd-15p"><%= image_tag 'about_cake', size: "600x400" %>
+                    <div class="text-center">
+                        ようこそ、長野CAKEへ！</br>
+                        このサイトは、ケーキ販売のECサイトになります。</br>
+                        会員でない方も商品の閲覧はできますが、</br>
+                        購入には会員登録が必要になります。
+                    </div>
+                </div>
+            </div>
+            <h1>新着商品</h1>
+            <div class="row">
+                <% @items.each do |item| %>
+                <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px; margin: 10px 0;">
+                    <%= link_to item_path(item.id) do %>
+                        <% if item.image.attached? %>
+                            <%= image_tag item.image, size:"150x150" %>
+                        <% else %>
+                            <%= image_tag 'no_image',size:"150x150" %>
+                        <% end %>
+                    <% end %>
+                    <%= link_to item.name, item_path(item.id) %>
+                ¥<%= item.price %>
+                </div>
+                <% end %>
+            </div>
+            <%= paginate @items %>
         </div>
     </div>
 </div>
