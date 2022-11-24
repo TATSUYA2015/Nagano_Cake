@@ -10,10 +10,14 @@
     </div>
     <b>お届け先</b>
     <div class="container">
-        <p><%= f.label "ご自身の住所" %><%= @customers.postal_code %></p>
+        <p>
+        <%= f.label "ご自身の住所" %></br>
+        〒<%= @customers.postal_code %> <%= @customers.address %></br>
+        <%= @customers.last_name %> <%= @customers.first_name %>
+        </p>
         <p><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></p>
         <p></p>
     </div>
-    <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+    <p class="text-center"><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></p>
 </div>
 <% end %>
