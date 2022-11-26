@@ -45,7 +45,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>¥<%= @total_price %></td>
+                  <td>¥<%= @total_price.to_s(:delimited) %></td>
                 </tr>
               </tbody>
             </table>

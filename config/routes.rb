@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     root  'homes#top'
     get 'home/about' => 'homes#about', as: 'about'
     resources :customers, only:[:show, :edit, :update]
-    post 'customers/confirm' => 'customers#confirm', as: 'comfirm'
     #退会画面
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     #論理削除用のルーティング
@@ -21,7 +20,8 @@ Rails.application.routes.draw do
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
-    resources :orders, only:[:new, :comfirm, :complete, :index, :show, :create]
+    resources :orders, only:[:new, :complete, :index, :show, :create]
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
   end
 

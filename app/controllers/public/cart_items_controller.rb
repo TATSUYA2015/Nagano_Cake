@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item=CartItem.new(cart_item_params)
     @cart_item.customer_id=current_customer.id
     @cart_item.item_id = cart_item_params[:item_id]
-    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present? ##同じ商品がカートに存在する場合
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?  ##同じ商品がカートに存在する場合
       @cart_item=current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) ##追加する商品の個数
       @cart_item.amount += params[:cart_item][:amount].to_i                                 ##既存の個数＋追加する個数
       @cart_item.save

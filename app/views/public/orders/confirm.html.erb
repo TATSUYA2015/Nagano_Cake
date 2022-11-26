@@ -1,0 +1,49 @@
+<div class="container">
+  <h3>注文情報確認</h3>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-border">
+        <thead class="table-secondary">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @cart_items.each do |cart_item| %>
+        <tbody>
+          <tr>
+            <td><%= cart_item.item.name %></td>                             <!-- 商品名 -->
+            <td>¥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td> <!-- 単価(税込) -->
+            <td><%= cart_item.amount %></td>                                <!-- 数量 -->
+            <td>¥<%= cart_item.subtotal.to_s(:delimited) %></td>            <!-- 小計  -->
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <table class="table table-border">
+        <thead>
+          <tr><th class="table-secondary">送料</th><td>¥800</td></tr>
+          <tr><th class="table-secondary">商品合計</th><td>¥<%= @total_price.to_s(:delimited) %></td></tr>
+          <tr><th class="table-secondary">請求金額</th><td>¥<%= (@total_price+800).to_s(:delimited) %></td></tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <b>支払方法</b>
+  <div class="container">
+    <p><%= @order.payment_method %></p>
+  </div>
+</div>
+<div class="container">
+  <b>お届け先</b>
+  <p><%= @order.postal_code %> <%= @order.address %> <%= @order.name %></p>
+</div>
