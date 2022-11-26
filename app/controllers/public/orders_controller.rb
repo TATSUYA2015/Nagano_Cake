@@ -4,10 +4,10 @@ class Public::OrdersController < ApplicationController
     @customers=current_customer
   end
 
-  def create
+  def comfirm
   end
 
-  def comfirm
+  def create
   end
 
   def complete
