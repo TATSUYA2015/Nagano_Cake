@@ -16,7 +16,7 @@
                 <p class="text-left"><%= f.file_field :image, accept:"image/*" %></p>
                 <p class="text-left"><%= f.text_field :name, size:"40" %></p>
                 <p class="text-left"><%= f.text_area :introduction, size:"40x5" %></p>
-                <P class="text-left">#ジャンル</P>
+                <P class="text-left"><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></P>
                 <p class="text-left"><%= f.text_field :price, size:"40" %></p>
                 <P class="text-left">#販売ステータス</P>
             </div>

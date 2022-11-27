@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
 
   has_many :addresses, dependent: :destroy
   has_many :cart_items
+  has_many :orders
 
   validates :last_name,            presence: true
   validates :first_name,           presence: true
