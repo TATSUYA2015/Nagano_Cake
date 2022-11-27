@@ -10,7 +10,6 @@ class Public::AddressesController < ApplicationController
     @addresses=Address.all
     if @address.save
       redirect_to addresses_path(@address.id)
-      redirect_to addresses_path(@address.id)
     else
       render :index
     end
