@@ -1,9 +1,9 @@
 class Item < ApplicationRecord
 
     belongs_to :genre, optional: true
-    belongs_to :order_detail
+    has_many :order_details
     has_many :cart_items
-    has_many :order
+    has_many :orders
 
     has_one_attached :image
 
