@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
       @order.address=Address.find(params[:order][:address_id]).address
       @order.name=Address.find(params[:order][:address_id]).name
     elsif params[:order][:select_address] == "2"
-      @address = Address.new(address_params) #変数の初期化
+      @address = Address.new(address_params)
       @address.postal_code = params[:order][:postal_code] #newページで新しいお届け先に入力した郵便番号を取得代入
       @address.address = params[:order][:address] #newページで新しいお届け先に入力した住所を取得代入
       @address.name = params[:order][:name] #newページで新しいお届け先に入力した宛名を取得代入
@@ -36,18 +36,36 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = current_customer.orders.new(order_params)
+    if @order.save
+      @cart_items=current_customer.cart_items
+      current_customer.cart_items.each do |cart_item|
+        order_detail = OrderDetail.new(order_id: @order.id)
+        order_detail.item_id = cart_item.item_id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.item.price
+        order_detail.save
+      end
+      @cart_items.destroy_all
+      redirect_to complete_path
+
+    end
   end
 
   def index
+    @orders=Order.all
+    @customer=current_customer
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :customer_id, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :customer_id, :postal_code, :address, :name, :shoping_cost, :total_payment)
   end
 
   def address_params

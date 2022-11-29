@@ -1,6 +1,9 @@
 class OrderDetail < ApplicationRecord
 
-  validates :final_price,      presence:true
+  belongs_to :order
+  belongs_to :item
+
+  validates :price,      presence:true
   validates :amount,     presence:true
 
 end
