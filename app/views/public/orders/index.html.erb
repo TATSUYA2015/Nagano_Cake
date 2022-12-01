@@ -16,7 +16,9 @@
     <% @orders.each do |order| %>
     <tbody>
       <tr>
-        <td><%= order.updated_at.strftime('%Y/%m/%d') %></td>
+        <td>
+          <%= order.updated_at.strftime('%Y/%m/%d') %>
+        </td>
         <td>
           <%= order.postal_code %>
           <%= order.address %>
