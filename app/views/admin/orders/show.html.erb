@@ -5,10 +5,10 @@
   <div class="row">
     <table>
       <tbody>
-        <tr><th>購入者</th><td></td></tr>
-        <tr><th>注文日</th><td></td></tr>
-        <tr><th>配送先</th><td></td></tr>
-        <tr><th>支払方法</th><td></td></tr>
+        <tr><th>購入者</th><td><%= @order.name %></td></tr>
+        <tr><th>注文日</th><td><%= @order.updated_at.strftime('%Y/%m/%d') %></td></tr>
+        <tr><th>配送先</th><td>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></td></tr>
+        <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
         <tr><th>注文ステータス</th><td></td></tr>
       </tbody>
     </table>
@@ -28,24 +28,26 @@
             <th></th>
           </tr>
         </thead>
+        <% @order_details.each do |order_detail| %>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= order_detail.item.name %></td>
+            <td>¥<%= order_detail.price.to_s(:delimited) %></td>
+            <td><%= order_detail.amount %></td>
+            <td>¥<%= (order_detail.price*order_detail.amount).to_s(:delimited) %></td>
             <td></td>
             <td></td>
           </tr>
         </tbody>
+        <% end %>
       </table>
     </div>
     <div class="col-md-4">
       <table>
         <tbody>
-          <tr><th>商品合計</th><td></td></tr>
-          <tr><th>送料</th><td></td></tr>
-          <tr><th>請求金額合計</th><td></td></tr>
+          <tr><th>商品合計</th><td>¥<%= @order.total_payment.to_s(:delimited) %></td></tr>
+          <tr><th>送料</th><td>¥<%= @order.shoping_cost %></td></tr>
+          <tr><th>請求金額合計</th><td>¥<%= (@order.total_payment + @order.shoping_cost).to_s(:delimited) %></td></tr>
         </tbody>
       </table>
     </div>
