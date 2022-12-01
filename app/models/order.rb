@@ -1,8 +1,6 @@
 class Order < ApplicationRecord
 
   belongs_to :customer
-  belongs_to :item
-  has_many :cart_items
   has_many :order_details
 
   validates :postal_code,          presence:true

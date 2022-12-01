@@ -5,6 +5,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    @genres=Genre.all
     @cart_item=CartItem.new(cart_item_params)
     @cart_item.customer_id=current_customer.id
     @cart_item.item_id = cart_item_params[:item_id]
@@ -16,7 +17,7 @@ class Public::CartItemsController < ApplicationController
     elsif @cart_item.save   ##同じ商品がカートに存在しない場合
       redirect_to cart_items_path(@customer_id)
     else
-      render "items/show"
+      render 'public/items/show'
     end
   end
 

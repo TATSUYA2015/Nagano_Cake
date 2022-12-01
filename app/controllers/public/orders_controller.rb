@@ -43,7 +43,7 @@ class Public::OrdersController < ApplicationController
         order_detail = OrderDetail.new(order_id: @order.id)
         order_detail.item_id = cart_item.item_id ##商品
         order_detail.amount = cart_item.amount  ##商品の個数
-        order_detail.price = cart_item.item.price ##商品の個数
+        order_detail.price = cart_item.item.price ##商品の価格
         order_detail.save
       end
       @cart_items.destroy_all
@@ -57,6 +57,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order=Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   private

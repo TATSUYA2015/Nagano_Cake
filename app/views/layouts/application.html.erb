@@ -30,6 +30,22 @@
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mr-3vw" %>
                 </li>
+                <% elsif admin_signed_in? %>
+                <li classs="nav-item">
+                  <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary mr-3vw" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mr-3vw" %>
+                </li>
+                <li class="nav-items">
+                  <%= link_to "注文一覧", class: "btn btn-outline-secondary mr-3vw" %>
+                </li>
+                <li class="nav-items">
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mr-3vw" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mr-3vw" %>
+                </li>
                 <% else %>
                 <li>
                   <%= link_to "About",  about_path, class: "btn btn-outline-secondary mr-3vw" %>
