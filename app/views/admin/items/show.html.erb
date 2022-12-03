@@ -13,23 +13,23 @@
       </div>
       <div class="col-md-6">
         <div class="row align-items-center">
-          <div class="col-md-3">
-              <p class="text-left">商品名</p><br>
-              <p class="text-left">商品説明</p><br>
-              <p class="text-left">ジャンル</p><br>
-              <p class="text-left">
-                税込価格<br>
-                (税抜価格)
-              <p><br>
-              <p class="text-left">販売ステータス</p>
-          </div>
-          <div class="col-9">
-            <p class="text-left"><%= @item.name %></p>
-            <p class="text-left"><%= @item.introduction %></p>
-            <p class="text-left">#ジャンル</p>
-            <p class="text-left"><%= @item.price %></p>
-            <p class="text-left">#販売ステータス</p>
-          </div>
+          <table>
+            <tbody>
+              <tr><th>商品名</th><td><%= @item.name %></td></tr>
+              <tr><th>商品説明</th><td><%= @item.introduction %></td></tr>
+              <tr><th>ジャンル</th><td><%= @item.genre.name %></td></tr>
+              <tr><th>税込価格</br>(税抜価格)</th><td><%= @item.price.to_s(:delimited) %>円</br><%= @item.with_tax_price.to_s(:delimited) %>円</td></tr>
+              <tr>
+                <th>販売ステータス</th>
+                <td>
+                <% if @item.is_active %>
+                  販売中
+                <% else %>
+                  販売停止中
+                <% end %>
+                </td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

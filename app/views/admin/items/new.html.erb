@@ -36,6 +36,12 @@
               <div class="col-md-7">
                 <%= f.text_field :price, size: "40" %>
               </div>
+              <div class="col-md-5">
+                <p class="text-center">販売ステータス</p>
+              </div>
+              <div class="col-md-7">
+                <%= f.select :is_active,[["販売中",true],["販売停止中",false]],include_blank: "選択して下さい" %>
+              </div>
               <div class="btn-wrapper mx-auto">
                 <%= f.submit '新規登録',class: "btn btn-success" %>
               </div>

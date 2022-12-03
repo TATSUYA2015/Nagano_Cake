@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order=Order.new
     @customer=current_customer
+    @addressees=current_customer.addresses
   end
 
   def confirm
@@ -52,7 +53,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders=Order.all
+    @orders=current_customer.orders.all
     @customer=current_customer
   end
 

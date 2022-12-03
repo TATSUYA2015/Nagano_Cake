@@ -8,9 +8,10 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_homes_top_path
     when Customer
-      items_path
+      root_path
     end
   end
+
 
    def after_sign_out_path_for(resource)
     if resource == :admin
