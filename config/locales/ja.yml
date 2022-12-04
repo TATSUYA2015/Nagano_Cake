@@ -4,3 +4,9 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+ja:
+  enums:
+    item:
+      is_active:
+        sale: "販売中"
+        stop_selling: "販売停止中"

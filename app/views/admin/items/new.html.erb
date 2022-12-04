@@ -40,7 +40,8 @@
                 <p class="text-center">販売ステータス</p>
               </div>
               <div class="col-md-7">
-                <%= f.select :is_active,[["販売中",true],["販売停止中",false]],include_blank: "選択して下さい" %>
+                <%= f.radio_button :is_active, true, checked: true %><%= f.label :is_active_true , "販売中" %>
+                <%= f.radio_button :is_active, false %><%= f.label :is_active_false , "販売停止中" %>
               </div>
               <div class="btn-wrapper mx-auto">
                 <%= f.submit '新規登録',class: "btn btn-success" %>
